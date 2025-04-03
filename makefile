@@ -1,10 +1,11 @@
 create_venv:
 	python3 -m venv .venv
+	.venv/bin/pip install uv
 	@echo "Virtual environment created in .venv"
 	@echo "To activate the virtual environment, run: source .venv/bin/activate"
 
 requirements:
-	.venv/bin/pip install -r requirements.txt
+	.venv/bin/uv pip install -r requirements.txt
 
 help:
 	@echo "Usage: make [target]"
