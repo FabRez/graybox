@@ -22,19 +22,6 @@ Send a batch of flower measurements → get a class prediction and explanation f
 
 ---
 
-## 📦 API Overview
-
-| Endpoint     | Method | Description                              |
-|--------------|--------|------------------------------------------|
-| `/train`     | POST   | Train a custom MLP model on the Iris data|
-| `/predict`   | POST   | Predict classes for a batch of samples    |
-| `/explain`   | POST   | Explain predictions using SHAP values     |
-| `/docs`      | GET    | Interactive API docs via Swagger UI       |
-
-🧪 Once running, go to [http://localhost:8000/docs](http://localhost:8000/docs) to explore the API.
-
----
-
 ## 📂 Project Structure
 
 ├── LICENSE
@@ -44,15 +31,44 @@ Send a batch of flower measurements → get a class prediction and explanation f
 
 ## 🔧 Quickstart
 
-### 1. Install dependencies
+1. Create and activate a virtual environment
 
 ```bash
-pip install uv 
-uv pip install fastapi uvicorn scikit-learn shap pydantic joblib pandas numpy
+make create_venv
 ```
 
-### Run the API
+This creates a Python virtual environment in `.venv/` and installs `uv`.
+You'll see a message telling you how to activate the environment:
+
+```bash
+source .venv/bin/activate
+```
+
+2. Install project dependencies 
+
+```bash
+make requirements
+```
+
+Installs all required Python packages using `uv` from the `requirements.txt` file.
+
+---
+
+## 📦 API Overview
+
+Run the API using : 
 
 ```bash
 uvicorn mlp_iris_api:app
 ```
+
+The available endpoints once the API is running are :
+
+| Endpoint     | Method | Description                              |
+|--------------|--------|------------------------------------------|
+| `/train`     | POST   | Train a custom MLP model on the Iris data|
+| `/predict`   | POST   | Predict classes for a batch of samples    |
+| `/explain`   | POST   | Explain predictions using SHAP values     |
+| `/docs`      | GET    | Interactive API docs via Swagger UI       |
+
+🧪 Once running, go to [http://localhost:8000/docs](http://localhost:8000/docs) to explore the API.
