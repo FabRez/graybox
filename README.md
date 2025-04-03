@@ -1,19 +1,58 @@
-# 🧠 GRAYBOX — Explainable AI in Real-Time
+# 🧠 GRAYBOX — Explainable AI for Iris Classification
 
-**GRAYBOX** is a clean, production-ready demo of an explainable AI microservice.  
-It provides real-time predictions from a trained ML model — along with human-readable explanations using SHAP.
-
-Built with FastAPI, this project showcases how to bridge powerful machine learning with transparent, user-friendly insights.
+**GRAYBOX** is a FastAPI-based microservice for training, predicting, and explaining a neural network on the Iris dataset.  
+It allows users to customize training of an MLPClassifier and returns both predictions and human-readable explanations using SHAP.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Fast, async API for predictions
-- ✅ Built-in SHAP explanations (global + local)
-- ✅ Model training notebook included
-- ✅ Modular code structure for extensibility
-- ✅ Ready for deployment with Docker / GCP
-- ✅ MIT licensed
+- Train a multilayer perceptron (MLP) with custom hyperparameters
+- Batch prediction for multiple Iris samples
+- SHAP-based explanations with feature importance summaries
+- Fully async, modular FastAPI backend
+- Ready for extension or deployment
 
 ---
+
+## 📊 Example Use Case
+
+Use GRAYBOX as a demo of how to turn any ML model into a transparent, explainable API.  
+Send a batch of flower measurements → get a class prediction and explanation for each sample.
+
+---
+
+## 📦 API Overview
+
+| Endpoint     | Method | Description                              |
+|--------------|--------|------------------------------------------|
+| `/train`     | POST   | Train a custom MLP model on the Iris data|
+| `/predict`   | POST   | Predict classes for a batch of samples    |
+| `/explain`   | POST   | Explain predictions using SHAP values     |
+| `/docs`      | GET    | Interactive API docs via Swagger UI       |
+
+🧪 Once running, go to [http://localhost:8000/docs](http://localhost:8000/docs) to explore the API.
+
+---
+
+## 📂 Project Structure
+
+├── LICENSE
+└── README.md
+
+---
+
+## 🔧 Quickstart
+
+### 1. Install dependencies
+
+```bash
+pip install uv 
+uv pip install fastapi uvicorn scikit-learn shap pydantic joblib pandas numpy
+```
+
+### Run the API
+
+```bash
+uvicorn mlp_iris_api:app
+```
